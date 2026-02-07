@@ -982,1127 +982,294 @@
 <!DOCTYPE html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospitality Website</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: gold;
-            color: black;
-        }
-        header {
-            background-color: orange;
-            padding: 10px;
-            text-align: center;
-        }
-        nav {
-            margin: 10px 0;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-        .section {
-            padding: 20px;
-            border-radius: 5px;
-            margin: 10px;
-        }
-        .mission, .vision, .core-values {
-            background-color: silver;
-        }
-        .destinations {
-            background-color: white; /* Optional: You can change this to a specific color */
-        }
-        .contact {
-            background-color: purple;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        footer {
-            background-color: black;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-        @media (max-width: 600px) {
-            nav a {
-                display: block;
-                margin: 5px 0;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3A Tour & Travel</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; }
+header { background:#c1972e; color:rgb(54, 47, 47); padding:20px; text-align:center; }
+nav { display:flex; justify-content:flex-end; padding:10px; background:gold; }
+nav select { padding:5px; }
+section { padding:20px; }
+.carousel { display:flex; overflow-x:auto; scroll-behavior:smooth; }
+.carousel-item { min-width:300px; margin-right:10px; background:#f0f0f0; border-radius:10px; padding:10px; }
+form { display:flex; flex-direction:column; max-width:400px; margin:auto; }
+input, textarea, select, button { margin:5px 0; padding:10px; border-radius:5px; border:1px solid #ccc; }
+button { background:purple; color:orange; border:none; cursor:pointer; }
+button:hover { background:#1B4F72; }
+.footer { background:#191b1d; color:rgb(255, 255, 255); text-align:center; padding:10px; }
+</style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to Our Hospitality Website</h1>
-    <nav>
-        <a href="#mission">Mission</a>
-        <a href="#vision">Vision</a>
-        <a href="#core-values">Core Values</a>
-        <a href="#destinations">Destinations</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<h1 id="heroTitle">Explore Ethiopia with 3A Tour & Travel</h1>
+<p id="heroDesc">Discover cultural, natural, and adventure destinations across Ethiopia</p>
 </header>
 
-<div class="section mission" id="mission">
-    <h2>Our Mission</h2>
-    <p>To provide exceptional hospitality experiences that exceed our guests’ expectations.</p>
-</div>
+<nav>
+<select id="languageSelect">
+<option value="en">English</option>
+<option value="am">Amharic</option>
+<option value="om">Oromo</option>
+<option value="ti">Tigrinya</option>
+<option value="so">Somali</option>
+<option value="es">Spanish</option>
+<option value="fr">French</option>
+<option value="de">German</option>
+<option value="zh">Chinese</option>
+</select>
+</nav>
 
-<div class="section vision" id="vision">
-    <h2>Our Vision</h2>
-    <p>To be the leading hospitality provider, renowned for our innovation, service excellence, and sustainability.</p>
-</div>
+<section>
+<h2 id="routesTitle">Our Main Routes</h2>
+<div id="routesContainer"></div>
+</section>
+<section>
+<h2 id="contactTitle">Contact Us</h2>
+<form id="contactForm">
+<input type="text" id="name" placeholder="Name" required>
+<input type="email" id="email" placeholder="Email" required>
+<textarea id="message" placeholder="Message" required></textarea>
+<button type="submit" id="submitBtn">Send</button>
+</form>
+</section>
 
-<div class="section core-values" id="core-values">
-    <h2>Core Values</h2>
-    <ul>
-        <li>Integrity</li>
-        <li>Customer Focus</li>
-        <li>Teamwork</li>
-        <li>Innovation</li>
-        <li>Sustainability</li>
-    </ul>
-</div>
+<div class="footer" id="footerText">3A Tour & Travel © 2026 | Email: abdulselamnezif1@gmail.com | Phone: 0940320935</div>
 
-<div class="section destinations" id="destinations">
-    <h2>Destinations in Ethiopia</h2>
-    <p>Explore the breathtaking landscapes and rich cultural heritage of Ethiopia.</p>
-    <ul>
-        <li>Simien Mountains</li>
-        <li>Gondar</li>
-        <li>Lalibela</li>
-        <li>Aksum</li>
-        <li>Omo Valley</li>
-    </ul>
-</div>
+<script>
+const translations = {
+heroTitle:{en:"Explore Ethiopia with 3A Tour & Travel", am:"ከ3A ቱርና ትራቭል ጋር ኢትዮጵያን ያስሱ", om:"Itoophiyaa 3A Tour & Travel waliin Dubbisi", ti:"ከ3A ቱርንና ትራቭል ጋር ኢትዮጵያን ይጎብኙ", so:"Soo booqo Itoobiya 3A Tour & Travel", es:"Explora Etiopía con 3A Tour & Travel", fr:"Découvrez l'Éthiopie avec 3A Tour & Travel", de:"Entdecken Sie Äthiopien mit 3A Tour & Travel", zh:"与3A旅游探索埃塞俄比亚"},
+heroDesc:{en:"Discover cultural, natural, and adventure destinations across Ethiopia", am:"ባህላዊ፣ ተፈጥሮ፣ እና የፈረስ ጉዞ መዳረሻዎችን ያግኙ", om:"Bakka aadaa, uumamaa fi imala bashannanaa Itoophiyaa keessa jiran", ti:"ባህላዊ፣ ተፈጥሮ፣ እና የፈረስ ጉዞ መዳረሻዎችን ይጎብኙ", so:"Soo ogow meelaha dhaqanka, dabiiciga iyo dalxiiska Itoobiya", es:"Descubre destinos culturales, naturales y de aventura en Etiopía", fr:"Découvrez des destinations culturelles, naturelles et d'aventure en Éthiopie", de:"Entdecken Sie kulturelle, natürliche und Abenteuerziele in Äthiopien", zh:"探索埃塞俄比亚的文化、自然和冒险目的地"},
+contactTitle:{en:"Contact Us", am:"አግኙን", om:"Nu qunnami", ti:"አግኙን", so:"Nala soo xiriir", es:"Contáctenos", fr:"Contactez-nous", de:"Kontaktieren Sie uns", zh:"联系我们"},
+submitBtn:{en:"Send", am:"አስገባ", om:"Ergaa", ti:"አስገባ", so:"Dir", es:"Enviar", fr:"Envoyer", de:"Senden", zh:"发送"}
+};
 
-<div class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p>Phone: +251 940320935</p>
-    <p>Email: <a href="mailto:abdulselamnezif1@gmail.com" style="color: white;">abdulselamnezif1@gmail.com</a></p>
-</div>
+const attractionsData = {
+northern:[
+{title:{en:"Lalibela Rock Churches", am:"ላሊበላ ቅዱሳን ቤተ ክርስቲያኖች", om:"Lalibela Caasa Waaqayyoo", ti:"ላሊበላ ቤተ ክርስቲያኖች", so:"Kaniisadaha dhagaxa Lalibela", es:"Iglesias de roca de Lalibela", fr:"Églises rupestres de Lalibela", de:"Felsenkirchen von Lalibela", zh:"拉利贝拉岩石教堂"}, desc:{en:"11 medieval monolithic cave churches", am:"11 ከመካከለኛው ዘመን የተሠሩ ቅንጹ ቤተ ክርስቲያኖች", om:"11 koorniyaa dhagaa keessaa kan ijaarame", ti:"11 ቅንጹ ቤተ ክርስቲያኖች", so:"11 kaniisadood oo qalcad dhexe ah", es:"11 iglesias monolíticas medievales", fr:"11 églises monolithiques médiévales", de:"11 mittelalterliche monolithische Höhlenkirchen", zh:"11座中世纪单体岩洞教堂"}, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVJFFGLMj-QAEz8mfNcemoFe2NdwDG9wzwg&s=format&fit=crop&w=300&q=50"},
+{title:{en:"Axum Obelisks", am:"አክሱም ኦቤሊስኮች", om:"Axum Obelisks", ti:"አክሱም ኦቤሊስኮች", so:"Axum Obelisks", es:"Obeliscos de Axum", fr:"Obélisques d'Axoum", de:"Axum-Obelisken", zh:"阿克苏姆方尖碑"}, desc:{en:"Ancient stone obelisks and ruins", am:"የጥንታዊ ድንጋይ ኦቤሊስኮች እና ሐውልቶች", om:"Dhagaa durii fi ijaarsa durii", ti:"ድንጋይ ኦቤሊስኮች እና ቅንጹ", so:"Qalcad iyo dhagaxyo qadiimi ah", es:"Antiguos obeliscos y ruinas de piedra", fr:"Anciens obélisques et ruines en pierre", de:"Alte Steinobeliske und Ruinen", zh:"古老的石制方尖碑和遗址"}, img:" https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Rome_Stele.jpg/200px-Rome_Stele.jpg?auto=format&fit=crop&w=250&q=50"}
+],
+southern:[
+{title:{en:"Omo Valley Tribes", am:"የኦሞ ቸርቻ ሕዝቦች", om:"Hawaasa Omo", ti:"የኦሞ ሕዝቦች", so:"Qowmiyadaha Dooxada Omo", es:"Tribus del Valle de Omo", fr:"Tribus de la vallée de l'Omo", de:"Stämme im Omo-Tal", zh:"奥莫河谷部落"}, desc:{en:"Colorful tribal cultures along the Omo River", am:"በኦሞ ወንዝ ዳር ላይ ባህላዊ ቀለማት ሕዝቦች", om:"Aadaawwan garaagaraa laga Omo keessa jiran", ti:"ባህላዊ ቀለማት ሕዝቦች በኦሞ ወንዝ", so:"Dhaqamo dhaqameedyo midabo leh", es:"Culturas tribales coloridas a lo largo del río Omo", fr:"Cultures tribales colorées le long du fleuve Omo", de:"Bunte Stammeskulturen entlang des Omo-Flusses", zh:"奥莫河沿岸多彩的部落文化"}, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCU-ggORYuOTG4RmjxNuswHOp30Xlp3LvbTQ&s?auto=format&fit=crop&w=300&q=50"}
+]};
 
-<footer>
-    <p>&copy; 2023 Hospitality Website. All Rights Reserved.</p>
-</footer>
+let currentLang = 'en';
 
-</body>
-</html>
+const routesContainer = document.getElementById('routesContainer');
+
+function loadRoutes(){
+routesContainer.innerHTML='';
+for(const route in attractionsData){
+  const routeDiv = document.createElement('div');
+  routeDiv.innerHTML=`<h3>${route.charAt(0).toUpperCase()+route.slice(1)}</h3><div class='carousel'>${attractionsData[route].map(attraction=>`<div class='carousel-item'><img src='${attraction.img}' style='width:100%;border-radius:10px;'><h4>${attraction.title[currentLang]}</h4><p>${attraction.desc[currentLang]}</p></div>`).join('')}</div>`;
+  routesContainer.appendChild(routeDiv);
+}
+}
+
+function translateText(){
+document.getElementById('heroTitle').innerText = translations.heroTitle[currentLang];
+document.getElementById('heroDesc').innerText = translations.heroDesc[currentLang];
+document.getElementById('contactTitle').innerText = translations.contactTitle[currentLang];
+document.getElementById('submitBtn').innerText = translations.submitBtn[currentLang];
+loadRoutes();
+}
+
+document.getElementById('languageSelect').addEventListener('change', e=>{
+currentLang = e.target.value;
+translateText();
+});
+
+document.getElementById('contactForm').addEventListener('submit', e=>{
+e.preventDefault();
+alert('Message sent!');
+document.getElementById('contactForm').reset();
+});
+
+loadRoutes();
+</script>
 
 <!DOCTYPE html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Northern Ethiopia Attractions</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+    <title>Contact and Booking Form</title>
+    <style>
         body {
-            background-color: #889922;
-            color: #deeppink;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
         }
-        title{
-            color: darkgrey;
-        }
-        title.hover{
-            color: orange;
-            font-size: large;
-            padding-block: 10px;
-        }
-        title.active{
-            color: chocolate;
-        }
-
-        header {
-            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
-            color: purple;
-            text-align: center;
-            padding: 3rem 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 20px;
-        }
-
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.4rem;
-            gap: 1rem;
+        .form-container {
             background: white;
-            padding: 0.8rem;
-            border-radius: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
-
-        .search-box {
-            flex: 1;
-            min-width: 250px;
+        .form-group {
+            margin-bottom: 15px;
         }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: #8B4513;
-            box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.2);
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            border: none;
-            background-color: #yellow;
-            cursor: pointer;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .filter-btn:hover {
-            background-color: #e0e0e0;
-        }
-
-        .filter-btn.active {
-            background-color: #8B4513;
-            color: orange;
-        }
-
-        .stats {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 0.8rem;
-            color: gold;
-        }
-
-        .attractions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .attraction-card {
-            background: floralwhite;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .attraction-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .form-group label {
             display: block;
-            background-color: purple;
+            margin-bottom: 5px;
         }
-
-        .card-content {
-            padding: 0.8rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-
-        .card-content h3 {
-            margin-bottom: 0.8rem;
-            color: #8B4513;
-            font-size: 0.4rem;
-        }
-
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .region-tag {
-            background: #679854;
-            color: #2a5a9e;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            font-style: Garamond;
-        }
-
-        .type-tag {
-            background: #f0e6ff;
-            color: #6a0d34;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .card-content p {
-            background-color: chocolate;
-            color: #776655;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .card-footer { background-color: yellow;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-        }
-
-        .rating {
-            color: #ffc107;
-            font-weight: bold;
-        }
-
-        .view-btn {
-            background: #8B4513;
+        .form-group button {
+            background-color: #28a745;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s;
-            font-weight: 500;
         }
-
-        .view-btn:hover {
-            background: #A0522D;
+        .form-group button:hover {
+            background-color: #218838;
         }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            background-color: #995678;
-            color: #fff;
+        .social-media {
+            margin-top: 20px;
         }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            gap: 10px;
-        }
-
-        .page-btn {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            background: green;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .page-btn.active {
-            background: #8B4513;
-            color: yellow;
-            border-color: #8B4513;
-        }
-
-        .page-btn:hover:not(.active) {
-            background: #f1f1f1;
-        }
-
-        @media (max-width: 768px) {
-            .controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .filters {
-                justify-content: center;
-            }
-            
-            header h1 {
-                font-size: 2.2rem;
-                lighting-color: yellowgreen;
-
-            }
-            header h1.hover{
-                text-decoration: blink;
-            }
-            header h1.active{
-                background-blend-mode: ;
-            }
-            header h1.active{
-                flex-grow: ;
-            }
+        .social-media a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <head>
-        <h1 style="color:lightgoldenrodyellow; background-color:pink; text-align: left;">Aliner Tour and Travel</h1>
-</nav>
-    </head>
-    <header>
 
-
-        <h1 style="color:lightgoldenrodyellow; background-color:darkblue;">Northern Ethiopia Attractions</h1>
-        <p style="color: yellow;">Explore the rich cultural heritage, stunning landscapes, and historical wonders of Northern Ethiopia</p>
-    </header>
-
-    <div class="container">
-        <div class="controls">
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="Search attractions...">
-            </div>
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all" style="background-color: green; color: goldenrod;">All</button>
-                <button class="filter-btn" data-filter="Tigray"style="background-color: green; color: goldenrod;">Tigray</button>
-                <button class="filter-btn" data-filter="Amhara"style="background-color: green; color: goldenrod;">Amhara</button>
-                <button class="filter-btn" data-filter="Afar"style="background-color: green; color: goldenrod;">Afar</button>
-                <button class="filter-btn" data-filter="Historical"style="background-color: green; color: goldenrod;">Historical</button>
-                <button class="filter-btn" data-filter="Religious"style="background-color: green; color: goldenrod;">Religious</button>
-                <button class="filter-btn" data-filter="Natural"style="background-color: green; color: goldenrod;">Natural</button>
-            </div>
+<div class="form-container">
+    <h2>Booking Form</h2>
+    <form action="submit_booking.php" method="POST">
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
         </div>
-
-        <div class="stats">
-            Showing <span id="attraction-count" style="background-color:blanchedalmond; color:orange; padding-block: 10px 12px;">Attractions of the  Northern route</span> 
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
         </div>
-
-        <div class="attractions-grid" id="attractions-container">
-            <!-- Attraction cards will be inserted here by JavaScript -->
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
         </div>
-
-        <div class="pagination" id="pagination">
-            <!-- Pagination buttons will be inserted here by JavaScript -->
+        <div class="form-group">
+            <label for="date">Booking Date:</label>
+            <input type="date" id="date" name="date" required>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="time">Booking Time:</label>
+            <input type="time" id="time" name="time" required>
+        </div>
+        <div class="form-group">
+            <label for="requests">Special Requests:</label>
+            <textarea id="requests" name="requests" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit Booking</button>
+        </div>
+    </form>
+</div>
 
-    <footer>
-        <p>&copy; 3atourandtrave.wordpress.com|Sample data for demonstration purposes</p>
-    </footer>
+<div class="form-container">
+    <h2>Reservation</h2>
+    <form action="submit_reservation.php" method="POST">
+        <div class="form-group">
+            <label for="res_name">Full Name:</label>
+            <input type="text" id="res_name" name="res_name" required>
+        </div>
+        <div class="form-group">
+            <label for="res_email">Email:</label>
+            <input type="email" id="res_email" name="res_email" required>
+        </div>
+        <div class="form-group">
+            <label for="res_date">Reservation Date:</label>
+            <input type="date" id="res_date" name="res_date" required>
+        </div>
+        <div class="form-group">
+            <label for="res_time">Reservation Time:</label>
+            <input type="time" id="res_time" name="res_time" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit Reservation</button>
+        </div>
+    </form>
+</div>
 
-    <script>
-        // Sample data for 20 attractions (you would expand this to more)
-        const attractions = [
-            {
-                id: 1,
-                name: "Rock-Hewn Churches of Lalibela",
-                region: "Amhara",
-                type: "Religious",
-                image: "https://images.unsplash.com/photo-1582263955545-87dbfbb92a78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFsaWJlbGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-                description: "A collection of 11 monolithic cave churches carved out of rock in the 12th century, often called the 'Eighth Wonder of the World'.",
-                rating: 4.9
-            },
-            {
-                id: 2,
-                name: "Simien Mountains National Park",
-                region: "Amhara",
-                type: "Natural",
-                image: "https://images.unsplash.com/photo-1599485126361-7ec31b3c4c1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2ltaWVuJTIwbW91bnRhaW5zfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-                description: "A UNESCO site known as the 'Roof of Africa,' featuring dramatic peaks, deep valleys, and unique wildlife like the Gelada baboon.",
-                rating: 4.8
-            },
-            {
-                id: 3,
-                name: "Danakil Depression",
-                region: "Afar",
-                type: "Natural",
-                image: "https://images.unsplash.com/photo-1559313242-9188550322b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRhbmFraWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-                description: "One of the hottest, lowest, and most geologically active places on Earth, home to colorful sulfur springs, salt flats, and an active volcano.",
-                rating: 4.7
-            },
-            {
-                id: 4,
-                name: "Axum Obelisks",
-                region: "Tigray",
-                type: "Historical",
-                image: "https://images.unsplash.com/photo-1578660461360-20e6aad2e4fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXh1bXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-                description: "Giant, intricately carved stelae marking the tombs of ancient Aksumite rulers. The city of Axum was the heart of a great empire.",
-                rating: 4.6
-            },
-            {
-                id: 5,
-                name: "Erta Ale Volcano",
-                region: "Afar",
-                type: "Natural",
-                image: "https://images.unsplash.com/photo-1582263955545-87dbfbb92a78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZXJ0YSUyMGFsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-                description: "A continuously active basaltic shield volcano with one of the few permanent lava lakes in the world.",
-                rating: 4.7
-            },
-            {
-                id: 6,
-                name: "Debre Damo Monastery",
-                region: "Tigray",
-                type: "Religious",
-                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Debre_Damo_01.jpg/800px-Debre_Damo_01.jpg",
-                description: "A 6th-century monastery accessible only by climbing a 15-meter rope up a sheer cliff. It is men-only and houses ancient manuscripts.",
-                rating: 4.5
-            },
-            {
-                id: 7,
-                name: "Blue Nile Falls",
-                region: "Amhara",
-                type: "Natural",
-                image: "https://images.unsplash.com/photo-1593080761888-faab5334360?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Ymx1ZSUyMG5pbGUlMjBmYWxsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-                description: "Known as 'Tis Issat' or 'Smoking Water,' these impressive falls are a major source of the Nile River.",
-                rating: 4.4
-            },
-            {
-                id: 8,
-                name: "Gondar Castles",
-                region: "Amhara",
-                type: "Historical",
-                image: "https://images.unsplash.com/photo-1580733318918-05dfa51ec711?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z29uZGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-                description: "A UNESCO World Heritage Site often called the 'Camelot of Africa,' featuring a fortified royal enclosure from the 17th century.",
-                rating: 4.6
-            },
-            {
-                id: 9,
-                name: "Tigray Rock-Hewn Churches",
-                region: "Tigray",
-                type: "Religious",
-                image: "https://www.ethiopiaobserver.com/wp-content/uploads/2021/02/Abuna-Yemata-Guh-1.jpg",
-                description: "Over 120 ancient churches carved into the mountains of Tigray, many in breathtaking and inaccessible locations, like Abuna Yemata Guh.",
-                rating: 4.7
-            },
-            {
-                id: 10,
-                name: "Lake Tana & its Monasteries",
-                region: "Amhara",
-                type: "Religious",
-                image: "https://images.unsplash.com/photo-1578660461361-20e6aad2e4fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bGFrZSUyMHRhbmF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-                description: "The source of the Blue Nile, this vast lake is dotted with islands housing medieval monasteries containing priceless religious art.",
-                rating: 4.5
-            },
-            {
-                id: 11,
-                name: "Yeha Temple",
-                region: "Tigray",
-                type: "Historical",
-                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Yeha_Temple.jpg/800px-Yeha_Temple.jpg",
-                description: "The oldest standing structure in Ethiopia, dating back to the 5th century BC, built by the Sabaean civilization.",
-                rating: 4.3
-            },
-            {
-                id: 12,
-                name: "Negash Mosque",
-                region: "Tigray",
-                type: "Religious",
-                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Negash_Amin_%2811%29.jpg/800px-Negash_Amin_%2811%29.jpg",
-                description: "Considered the first mosque in Africa, built when Prophet Muhammad's companions sought refuge in the 7th century.",
-                rating: 4.2
-            },
-            {
-                id: 13,
-                name: "Awash National Park",
-                region: "Afar",
-                type: "Natural",
-                image: "https://images.unsplash.com/photo-1578660461361-20e6aad2e4fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXdhc2h8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-                description: "Home to the spectacular Awash River Gorge, wildlife including oryx, and the Fantale volcano.",
-                rating: 4.4
-            },
-            {
-                id: 14,
-                name: "Fasil Ghebbi",
-                region: "Amhara",
-                type: "Historical",
-                image: "https://images.unsplash.com/photo-1580733318918-05dfa51ec711?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFzaWwlMjBnaGViYml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-                description: "A fortress-city that was the residence of the Ethiopian emperor Fasilides and his successors in the 17th century.",
-                rating: 4.5
-            },
-            {
-                id: 15,
-                name: "Dallol Sulfur Springs",
-                region: "Afar",
-                type: "Natural",
-                image: "https://images.unsplash.com/photo-1559313242-9188550322b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRhbGxvbHxlbnwwfHwwfHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-                description: "An otherworldly landscape of vibrant yellow, green, and red mineral deposits from hot springs in the Danakil Depression.",
-                rating: 4.7
-            },
-            {
-                id: 16,
-                name: "Mekele City",
-                region: "Tigray",
-                type: "Historical",
-                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Mekele_at_night.jpg/800px-Mekele_at_night.jpg",
-                description: "The capital of Tigray region with historical significance as Emperor Yohannes IV's capital and the Alula Aba Nega Museum.",
-                rating: 4.2
-            },
-            {
-                id: 17,
-                name: "Lake Ashenge",
-                region: "Tigray",
-                type: "Natural",
-                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Lake_Ashenge.jpg/800px-Lake_Ashenge.jpg",
-                description: "A beautiful crater lake surrounded by mountains, important for bird watching and with historical significance.",
-                rating: 4.1
-            },
-            {
-                id: 18,
-                name: "Debre Birhan Selassie Church",
-                region: "Amhara",
-                type: "Religious",
-                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Debre_Birhan_Selassie_Church_02.jpg/800px-Debre_Birhan_Selassie_Church_02.jpg",
-                description: "Famous for its beautifully painted ceiling featuring the faces of 80 cherubim, located in Gondar.",
-                rating: 4.4
-            },
-            {
-                id: 19,
-                name: "Semien Mountains Trekking Routes",
-                region: "Amhara",
-                type: "Natural",
-                image: "https://images.unsplash.com/photo-1599485126361-7ec31b3c4c1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2VtaWVuJTIwbW91bnRhaW5zfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-                description: "World-class trekking routes through stunning landscapes with opportunities to see unique wildlife and traditional villages.",
-                rating: 4.8
-            },
-            {
-                id: 20,
-                name: "Adwa Mountains",
-                region: "Tigray",
-                type: "Historical",
-                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Adwa_mountains.jpg/800px-Adwa_mountains.jpg",
-                description: "Site of the historic Battle of Adwa in 1896 where Ethiopian forces defeated Italian invaders, preserving the country's independence.",
-                rating: 4.5
-            }
-        ];
+<div class="form-container">
+    <h2>Information Query</h2>
+    <form action="submit_query.php" method="POST">
+        <div class="form-group">
+            <label for="query_name">Full Name:</label>
+            <input type="text" id="query_name" name="query_name" required>
+        </div>
+        <div class="form-group">
+            <label for="query_email">Email:</label>
+            <input type="email" id="query_email" name="query_email" required>
+        </div>
+        <div class="form-group">
+            <label for="query_message">Your Query:</label>
+            <textarea id="query_message" name="query_message" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit Query</button>
+        </div>
+    </form>
+</div>
 
-        // DOM Elements
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const attractionsContainer = document.getElementById('attractions-container');
-        const searchInput = document.getElementById('search-input');
-        const attractionCount = document.getElementById('attraction-count');
-        const paginationContainer = document.getElementById('pagination');
+<div class="form-container">
+    <h2>Email Send Form</h2>
+    <form action="send_email.php" method="POST">
+        <div class="form-group">
+            <label for="email_subject">Subject:</label>
+            <input type="text" id="email_subject" name="email_subject" required>
+        </div>
+        <div class="form-group">
+            <label for="email_body">Message:</label>
+            <textarea id="email_body" name="email_body" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Send Email</button>
+        </div>
+    </form>
+</div>
 
-        // State variables
-        let currentFilter = 'all';
-        let currentSearch = '';
-        let currentPage = 1;
-        const itemsPerPage = 9;
+<div class="form-container">
+    <h2>Major Contact Form</h2>
+    <form action="submit_contact.php" method="POST">
+        <div class="form-group">
+            <label for="contact_name">Full Name:</label>
+            <input type="text" id="contact_name" name="contact_name" required>
+        </div>
+        <div class="form-group">
+            <label for="contact_email">Email:</label>
+            <input type="email" id="contact_email" name="contact_email" required>
+        </div>
+        <div class="form-group">
+            <label for="contact_message">Message:</label>
+            <textarea id="contact_message" name="contact_message" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit Contact</button>
+        </div>
+    </form>
+</div>
 
-        // Function to display attractions
-        function displayAttractions(attractionsToShow, page = 1) {
-            attractionsContainer.innerHTML = '';
-            
-            // Calculate pagination
-            const startIndex = (page - 1) * itemsPerPage;
-            const endIndex = startIndex + itemsPerPage;
-            const paginatedAttractions = attractionsToShow.slice(startIndex, endIndex);
-            
-            // Update count
-            attractionCount.textContent = attractionsToShow.length;
-            
-            // Display attractions
-            paginatedAttractions.forEach(attraction => {
-                const card = document.createElement('div');
-                card.className = 'attraction-card';
-                card.setAttribute('data-region', attraction.region);
-                card.setAttribute('data-type', attraction.type);
-                card.innerHTML = `
-                    <img src="${attraction.image}" alt="${attraction.name}" class="card-img" onerror="this.src='https://via.placeholder.com/400x300/CCCCCC/969696?text=Image+Not+Found'">
-                    <div class="card-content">
-                        <h3>${attraction.name}</h3>
-                        <div class="card-tags">
-                            <span class="region-tag">${attraction.region}</span>
-                            <span class="type-tag">${attraction.type}</span>
-                        </div>
-                        <p>${attraction.description}</p>
-                        <div class="card-footer">
-                            <div class="rating">★ ${attraction.rating}</div>
-                            <button class="view-btn">View Details</button>
-                        </div>
-                    </div>
-                `;
-                attractionsContainer.appendChild(card);
-            });
-            
-            // Update pagination
-            updatePagination(attractionsToShow.length, page);
-        }
-
-        // Function to update pagination buttons
-        function updatePagination(totalItems, currentPage) {
-            const totalPages = Math.ceil(totalItems / itemsPerPage);
-            paginationContainer.innerHTML = '';
-            
-            if (totalPages <= 1) return;
-            
-            // Previous button
-            if (currentPage > 1) {
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'page-btn';
-                prevBtn.textContent = 'Previous';
-                prevBtn.addEventListener('click', () => {
-                    filterAndDisplayAttractions(currentPage - 1);
-                });
-                paginationContainer.appendChild(prevBtn);
-            }
-            
-            // Page buttons
-            for (let i = 1; i <= totalPages; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
-                pageBtn.textContent = i;
-                pageBtn.addEventListener('click', () => {
-                    filterAndDisplayAttractions(i);
-                });
-                paginationContainer.appendChild(pageBtn);
-            }
-            
-            // Next button
-            if (currentPage < totalPages) {
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'page-btn';
-                nextBtn.textContent = 'Next';
-                nextBtn.addEventListener('click', () => {
-                    filterAndDisplayAttractions(currentPage + 1);
-                });
-                paginationContainer.appendChild(nextBtn);
-            }
-        }
-
-        // Function to filter and display attractions
-        function filterAndDisplayAttractions(page = 1) {
-            currentPage = page;
-            
-            let filteredAttractions;
-            
-            if (currentFilter === 'all') {
-                filteredAttractions = attractions;
-            } else {
-                filteredAttractions = attractions.filter(attraction =>
-                    attraction.region === currentFilter || attraction.type === currentFilter
-                );
-            }
-            
-            // Apply search filter
-            if (currentSearch) {
-                filteredAttractions = filteredAttractions.filter(attraction =>
-                    attraction.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
-                    attraction.description.toLowerCase().includes(currentSearch.toLowerCase())
-                );
-            }
-            
-            displayAttractions(filteredAttractions, page);
-        }
-
-        // Initial display of all attractions
-        filterAndDisplayAttractions();
-
-        // Filter functionality
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Set active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                currentFilter = button.getAttribute('data-filter');
-                filterAndDisplayAttractions(1);
-            });
-        });
-
-        // Search functionality
-        searchInput.addEventListener('input', () => {
-            currentSearch = searchInput.value;
-            filterAndDisplayAttractions(1);
-        });
-    </script>
+<div class="social-media">
+    <h3>Follow Us:</h3>
+    <a href="https://facebook.com" target="_blank">Facebook</a>
+    <a href="https://twitter.com" target="_blank">Twitter</a>
+    <a href="https://instagram.com" target="_blank">Instagram</a>
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+</div>
 
 </body>
 </html>
-<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>footer</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --ethiopia-green: #078930;
-            --ethiopia-yellow: #FCDD09;
-            --ethiopia-red: #DA121A;
-            --ethiopia-blue: #0F47AF;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-        
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--ethiopia-green);
-        }
-        
-        .nav-link {
-            color: #333;
-            font-weight: 500;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: var(--ethiopia-green);
-        }
-        
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-        
-        .section-title {
-            position: relative;
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--ethiopia-yellow);
-        }
-        
-        .accordion-button {
-            font-weight: 600;
-        }
-        
-        .accordion-button:not(.collapsed) {
-            background-color: rgba(7, 137, 48, 0.1);
-            color: var(--ethiopia-green);
-        }
-        
-        .transport-card {
-            transition: transform 0.3s;
-            border: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            height: 100%;
-        }
-        
-        .transport-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .transport-icon {
-            font-size: 2.5rem;
-            color: var(--ethiopia-green);
-            margin-bottom: 1rem;
-        }
-        
-        .alert-custom {
-            border-left: 4px solid var(--ethiopia-yellow);
-            background-color: rgba(252, 221, 9, 0.1);
-        }
-        
-        .btn-primary {
-            background-color: var(--ethiopia-green);
-            border-color: var(--ethiopia-green);
-        }
-        
-        .btn-primary:hover {
-            background-color: #067025;
-            border-color: #067025;
-        }
-        
-        .btn-outline-primary {
-            color: var(--ethiopia-green);
-            border-color: var(--ethiopia-green);
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--ethiopia-green);
-            border-color: var(--ethiopia-green);
-        }
-        
-        .modal-header {
-            background-color: var(--ethiopia-green);
-            color: white;
-        }
-        
-        .offcanvas-header {
-            background-color: var(--ethiopia-green);
-            color: white;
-        }
-        
-        .badge-ethiopia {
-            background-color: var(--ethiopia-yellow);
-            color: #333;
-        }
-        
-        .feature-box {
-            padding: 1.5rem;
-            border-radius: 8px;
-            background-color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            height: 100%;
-            transition: transform 0.3s;
-        }
-        
-        .feature-box:hover {
-            transform: translateY(-5px);
-        }
-        
-        footer {
-            background-color: #1a1a1a;
-            color: white;
-        }
-        
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--ethiopia-yellow);
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--ethiopia-green);
-        }
-        
-        /* Ethiopian Flag Color Sections */
-        .ethiopia-flag-section {
-            background: linear-gradient(to right, 
-                var(--ethiopia-green) 0%, 
-                var(--ethiopia-green) 33%, 
-                var(--ethiopia-yellow) 33%, 
-                var(--ethiopia-yellow) 66%, 
-                var(--ethiopia-red) 66%, 
-                var(--ethiopia-red) 100%);
-            color: white;
-            padding: 60px 0;
-        }
-        
-        .ethiopia-flag-section .section-title {
-            color: white;
-        }
-        
-        .ethiopia-flag-section .section-title:after {
-            background-color: white;
-        }
-        
-        .ethiopia-flag-section .card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-        }
-        
-        .ethiopia-flag-section .card-header {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .route-map {
-            height: 400px;
-            background: linear-gradient(rgba(7, 137, 48, 0.7), rgba(7, 137, 48, 0.7)), 
-                        url('https://images.unsplash.com/photo-1589566938203-e31ac4e51e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
-        
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-        
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background-color: var(--ethiopia-yellow);
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 30px;
-        }
-        
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            left: -36px;
-            top: 5px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: var(--ethiopia-green);
-            border: 3px solid white;
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 30px;
-        }
-        
-        .testimonial-card .rating {
-            color: var(--ethiopia-yellow);
-            margin-bottom: 15px;
-        }
-    </style>
-
-    </head>
-    <body><!-- Footer -->
-    <footer class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h4 class="text-warning mb-4">EthioTransit</h4>
-                    <p>Your trusted partner for transportation solutions across Ethiopia's most beautiful destinations.</p>
-                    <div class="social-links mt-4">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h5 class="text-light mb-4">Quick Links</h5>
-                    <ul class="list-unstyled footer-links">
-                        <li class="mb-2"><a href="Home.html">Home</a></li>
-                        <li class="mb-2"><a href="#">Transport Options</a></li>
-                        <li class="mb-2"><a href="#">Book Now</a></li>
-            <div class="col-lg-3 col-md-6 mb-5">
-            <h6 class="text-light mb-5"> Major links </h6>
-            <li><a class="dropdown-item" href="home.html">Home</li>
-                    <li><a class="dropdown-item" href="Aboutus.html">About us</a></li>
-                    <li><a class="dropdown-item" href="services.html">services</a></li>
-                    <li><a class="dropdown-item" href="destinations.html">Destinations</a></li>
-                    <li><a class="dropdown-divider" href=Core Attraction.html>Attraction</li>
-                    <li><a class="dropdown-item" href="Contact.html">Contact us</a></li>
-                    <li><a class="dropdown-item" href="Accommodation.html">Accomodation</a></li>
-                    <li><a class="dropdown-item"href="Transportation.html">Transportation</a></li>
-                    <li><a class="dropdown-item"href="Addis Ababa attractions.html">Addis Ababa Attractions</a> </li>
-                    <li><a class="dropdown-item"href="C:\Users\Administrator\Desktop\aaa\contact.html">Northern Ethiopia Attractions</a></li>
-                    <li><a class="dropdown-item"href="Semien.html">Eastern Ethiopia Tourist Attractions.html</a>
-                    <li><a class ="dropdown-items"href="southern ethiopia.html">Southern Ethiopia Attractions</a>
-                </div>
-                </ul>
-              </li>
-                </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-6">
-                    <h5 class="text-light mb-4">Transport Services</h5>
-                    <ul class="list-unstyled footer-links">
-                        <li class="mb-2"><a href="#">Domestic Flights</a></li>
-                        <li class="mb-2"><a href="#">Bus Services</a></li>
-                        <li class="mb-2"><a href="#">Car Rentals</a></li>
-                        <li class="mb-2"><a href="#">Tour Packages</a></li>
-                        <li class="mb-2"><a href="#">Airport Transfers</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 mb-4">
-                    <h5 class="text-light mb-4">Contact Info</h5>
-                    <ul class="list-unstyled footer-links">
-                        <li class="mb-3">
-                            <i class="fas fa-map-marker-alt me-2 text-warning"></i>
-                            Addis Ababa, Ethiopia
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-phone me-2 text-warning"></i>
-                            +251 940320935
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-envelope me-2 text-warning"></i>
-                            3atourandtrave.wordpress.com
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4 bg-secondary">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 3atourandtrave.wordpress.com</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="footer-links me-3">Privacy Policy</a>
-                    <a href="#" class="footer-links">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
-
