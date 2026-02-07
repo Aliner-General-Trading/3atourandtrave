@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aliner-Tours & Travel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --ethiopia-green: #078930;
+            --ethiopia-yellow: #FCDD09;
+            --ethiopia-red: #DA121A;
+            --ethiopia-blue: #0F47AF;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ethiopia-green);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--ethiopia-yellow);
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--ethiopia-green);
+        }
+
+        .nav-links a.active {
+            color: var(--ethiopia-green);
+            font-weight: 600;
+        }
+
+        /* Hero Section with Ethiopian Flag Colors */
+        .hero {
+            background: linear-gradient(to right, 
+                var(--ethiopia-green) 0%, 
+                var(--ethiopia-green) 33%, 
+                var(--ethiopia-yellow) 33%, 
+                var(--ethiopia-yellow) 66%, 
+                var(--ethiopia-red) 66%, 
+                var(--ethiopia-red) 100%);
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--ethiopia-blue);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0d3c94;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--ethiopia-green);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--ethiopia-yellow);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            background-color: white;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 30px;
+        }
+
+        .slide-content h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background-color: white;
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .indicator.active {
+            background-color: var(--ethiopia-green);
+        }
+
+        /* Accordion Section */
+        .accordion-section {
+            background-color: #f8f9fa;
+        }
+
+        .accordion-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 20px;
+            background-color: var(--ethiopia-green);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .accordion-header i {
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .accordion-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .accordion-content li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .accordion-content li:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-content li i {
+            color: var(--ethiopia-yellow);
+            margin-right: 10px;
+        }
+
+        /* Highlights Section */
+        .highlights-section {
+            background-color: white;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .highlight-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .highlight-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .highlight-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .highlight-card:hover .highlight-image img {
+            transform: scale(1.1);
+        }
+
+        .highlight-content {
+            padding: 20px;
+        }
+
+        .highlight-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--ethiopia-green);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(7, 137, 48, 0.9), rgba(7, 137, 48, 0.9)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            color: var(--ethiopia-yellow);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--ethiopia-yellow);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--ethiopia-yellow);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--ethiopia-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .carousel-slide img {
+                height: 400px;
+            }
+            
+            .slide-content h3 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<!-- Home-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aliner Tour and Travel</title>
+    <style>
+      IMG:hover{text-shadow: 2px;
+    color: red;
+    font-size: larger;
+    text-decoration: aqua;
+
+      }
+      img:active{
+        background-color: yellowgreen;
+    color:green
+    text: color-mix(in srgb, color 35%, color 65%)
+
+      }
+
+      img::content{
+    color: blueviolet;
+    border-color: blanchedalmond;
+  }
+  img:visited{
+    text-decoration: double;
+    text-decoration: solid;
+    text-transform: capitalize;
+    color: blue;
+  }
+      h1{align-items: center;
+      background-attachment: fixed;
+    text-align: center;
+  text-decoration: wavy;}
+  h1:hover{
+    color: red;
+    font-size: medium;
+    text-decoration: aqua;
+  }
+  h1:active{
+    background-color: yellowgreen;
+    color:green
+    text: color-mix(in srgb, color 35%, color 65%)
+  }
+  h1::content{
+    color: blueviolet;
+    border-color: blanchedalmond;
+  }
+  h1:visited{
+    text-decoration: double;
+    text-decoration: solid;
+    text-transform: capitalize;
+    color: blue;
+  }
+  p{text-align: center;
+    font-size: larger;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+  }
+  H1{
+    align-items: center;
+    text-align: center;
+    color: olivedrab;
+  }
+
+  h1:hover{
+    color: blueviolet;
+
+  }
+  h1:active{
+    color: aqua;
+
+
+  }
+  h1:visited{
+    color: pink
+  }
+  p:hover{
+    color: blueviolet;
+
+  }
+  p:active{
+    color: aqua;
+
+
+  }
+  p:visited{
+    color: pink;
+  }
+button:visited{
+yellow;
+button:active{
+color:red;
+
+}
+button:hover{
+background #3498db;
+.button:active{color:yellow;
+}    </style>
+</head>
+<div class="container-fluid bg-warning">
+<img src="08/ALINER LOGO.jpg" alt="" height="45" width="45"><h1><b>Aliner Tour and Travel </h1>    <p >+251 940320935 </p></b>&nbsp;  
+<link rel="stylesheet" href="C:\Users\test76\Desktop\A\B\C\D\E\F\G\H\I\2025\project 1\forms.html">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+<link rel="stylesheet" href="C:\Users\test76\Desktop\A\B\C\D\E\F\G\H\I\2025\project 1\About us.html">
+<link rel="stylesheet" href="C:\Users\test76\Desktop\A\B\C\D\E\F\G\H\I\2025\project 1\alerts.html">
+ <!-- Header -->
+<body>
+    <nav class="navbar navbar-expand-lg bg-success">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#types of Tours.html">Aliner</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"><img src="c:\Users\test76\Desktop\2025\project 1\08\ALINER LOGO.jpg" alt="logo" height="35" width="45"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="C:\Users\Administrator\Desktop\aaa\services.html">services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="C:\Users\Administrator\Desktop\aaa\Aboutus.html">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="C:\Users\Administrator\Desktop\aaa\Contact.html">Contacts</a>
+                             </li>
+                   <li class="nav-item">
+                <a class="nav-link" href="C:\Users\Administrator\Desktop\aaa\destinations.html">Destinations</a>
+                <li class="nav-item">
+                    <a href="c.html">card</a>
+                </li>
+                            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  list of Activities
+                </a> <li class="nav-item"><a href="c.html">card</a></li>
+                 <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="forms.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Routes and Destinations
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="Aboutus.html">About us</a></li>
+                  <li><a class="dropdown-item" href="destinations.html">Destinations</a></li>
+                  <li><a class="dropdown-divider" href=Core Attraction.html>Attraction</li>
+                  <li><a class="dropdown-item" href="Contact us.html">Contact us</a></li>
+                  <li><a class="dropdown-item" href="Accommodation.html">Accomodation</a></li>
+                  <li><a class="dropdown-item"href="Transportation.html">Transportation</a></li>
+                  <li><a class="dropdown-item"href="Addis Ababa attractions.html">Addis Ababa Attractions</a><a/li>
+                 <li><a class="dropdown-item"href="Semien.html">Northern Ethiopia Attractions</a><a/li>
+                <li><a class="dropdown-item"href="Semien.html">Eastern Ethiopia Tourist Attractions.html</a>
+<a/li>
+                 <li><a class ="dropdown-items"href="southern ethiopia.html">Southern Ethiopia Attractions</a>
+                    
+
+                </ul>
+              </li>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <button type="button" role="listbox">
+            <button class="list" role="listbox">list</button>
+            </button>
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="coverpage">
+          <H1>Aliner General Trading </H1> 
+          <P>  Aliner General Trading is dedicated to provide you <b>
+          <br><span style="color: fuchsia;" exeptional  ></span></b>and< style="color: gold;"><em> <b>mesmorizing</b> </em> <span>
+            service for all      
+            <br>
+            <span style="color: blueviolet;"> <i>Tourism </span> and Hospitality service seekers.</i> </P>
+
+          </span>
+          </H1>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        .alert {
+            padding: 16px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .alert.hide {
+            transform: translateY(-10px);
+            opacity: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .alert-content {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .alert-icon {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        .alert-message {
+            flex: 1;
+        }
+        
+        .alert-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        
+        .alert-close:hover {
+            opacity: 1;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        
+        .control-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        select, button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        .alert-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .alert {
+                padding: 12px 15px;
+            }
+            
+            .alert-icon {
+                font-size: 20px;
+                margin-right: 10px;
+            }
+        }
+    </style>
+              </head>
+            
+      <!-- core value -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Core Values </title>
+
+<style>
+.button{ padding-left: 0%;
+    padding-block: 
+    flex ;
+    background-color: rgb(9, 9, 23);
+    margin-left: auto;
+
+}
+.header,nav, footer, body{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .body{
+        background-color: aqua;
+    }
+    .h{ color: azure;
+        text-align: center;
+        padding-block: ;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-decoration-color: blueviolet;
+    }
+    p{ color: white;
+        background-color: black;
+        text-align: center;
+        text-decoration-color: aqua;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: medium;
+    }
+    .body{
+        background-color:yellowgreen;
+    }
+    .container{
+        width:80 %
+        margin left: auto;
+        margin right: auto;
+    }
+    #container{
+        width: 80px;
+        margin left: grid-auto-flow: ;
+        Margin right: auto;
+    
+    }
+    footer{
+        font-size: 70;
+        text-align left: ;
+        margin-top: 20 px;
+        text-decoration-color: chartreuse;
+    }
+    ul{ color: azure;
+        list-style-type: circle;
+    
+    }
+    ol{ color: bisque;
+        list-style-type: decimal;
+    
+    }
+    .equip
+    { float left: 
+        padding-right: 20px;
+    
+    }
+    h2{ color: yellow;
+        text-align: center;
+        padding-block: ;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-decoration-color: blueviolet;
+    }
+    h1{ color: yellow;
+        text-align: center;
+        padding-block: ;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        text-decoration-color: blueviolet;
+    }
+    body{
+        background-color: cadetblue;
+
+    }
+ h2{
+    color: beige;
+
+ }
+ head{ 
+    border: 2px
+    padding-block: ; color: bisque;
+    background-color: aquamarine;
+    text-align: center;
+    text-decoration-color: beige;
+    font-size: x-large;
+ }
+ 
+    </style>
+
+<p>Aline Tour and Travel Company</p>
+</head>
+<br><br>
+<nav>  <img src="c:\Users\test76\Desktop\08\ALINER LOGO.jpg" alt="Aline logo" hight="30" width="40" alt="logo">
+     </nav>
+<br>
+<hr>
+<img src="" alt="">
+<body background="c:\Users\test76\Downloads\FESTIVALS\Entoto park.png"style="background-size: cover;">          
+   
+    <h1> Our Core Values </h1>
+   
+    <h2> Honesty</h2>
+    <p>As a company, the information provided to our customers
+     must be honest and trustworthy. 
+    This value makes us different and helps us make decisions
+     based on firm</p>
+     <h2>Teamwork </h2>
+    <p>Our relationship rests on a foundation of teamwork and 
+        mutual support, so we have built a group focused on
+         getting things done and operating based on talent 
+         and give-and-take.
+    <h2> We respect the individual </h2>
+     <p>Respect is considered the fundamental base of the
+     relations within our company. We value human dignity, 
+     accept our differences and consider our rights and those
+      of others to establish a polite and friendly working environment.</p>
+    <h2>Services Quality </h2>
+   <p>Service quality is one of our most essential
+    values, which demands all our effort, 
+   determination, and courage to succeed in our work and
+    the services we provide.
+    We conduct our work with dedication and without 
+    mistakes, optimizing delivery
+     time and putting effort into what we do to achieve
+      quality</p>
+     <h2> Communication </h2> 
+    <p>
+    Each of us must interact transparently and appropriately, 
+    trying to strengthen our interpersonal relations and
+     the company’s image.
+     We are conscious that our communication generates 
+     perceptions, expectations,
+      and requirements, which motivate us to improve our
+       behavior, attitude, and knowledge.</p>
+     <h2> Loyalty </h2>
+     <p>
+    Our team members must show loyalty, referring to 
+    faithfulness,
+     commitment, identification, pride, membership, 
+     confidentially, and
+      interest defense, at any moment for and in the 
+                    company’s </p>
+      <h2> Constructive Spirit </h2> 
+    <p>    Constructed spirit refers to a positive 
+        attitude, optimism, increased 
+    value chain, creativity, and good faith that must be
+     shown and lived by 
+    those who work in our company.
+    </p>
+    <h2> Community and Environment </h2>
+   <p> We commit socially and culturally to the community and 
+    adapt our business strategies to preserve the environment. </p>
+    
+    <br>
+    <br>
+    <button>
+        <div class="button">
+            
+           <a href="C:\Users\test76\Desktop\project 1\Home page.html">Read more</a> 
+
+        </div>
+
+                
+    </button> 
+</body>
+<br>
+<br>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Aliners 1
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Exceptional travel exprience
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Aliners 2
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+       mesmorizing events.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Aliners 3
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+     authentic tourism experience 
+      </div>
+    </div>
+  </div>
+</div>
+<div id="navbar">
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ethiopia Tours</h3>
+                    <p>Creating unforgettable travel experiences in the land of origins. Discover the beauty, history, and culture of Ethiopia with us.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\Home.html">Home</a></li>
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\Types of Tours...html">Tours</a></li>
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\destinations.html">Destinations</a></li>
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\Aboutus.html">About Us</a></li>
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\Contactus.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</li>
+                        <li><i class="fas fa-phone"></i> +251 940320935</li>
+                        <li><i class="fas fa-envelope"></i> info@3atourandtrave.wordpress.com</li>
+                        <li><i class="fas fa-clock"></i> Mon - Fri: 9:00 - 17:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 3atourandtrave Tours/Aliner tour and travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // Function to update carousel position
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            // Next slide
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateCarousel();
+            });
+            
+            // Previous slide
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateCarousel();
+            });
+            
+            // Indicator clicks
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Auto-advance carousel
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateCarousel();
+            }, 5000);
+            
+            // Accordion functionality
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const isActive = header.classList.contains('active');
+                    
+                    // Close all accordion items
+                    accordionHeaders.forEach(h => {
+                        h.classList.remove('active');
+                        h.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        header.classList.add('active');
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+    </html>
+<!-- End of Home -->
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="C:\Users\Administrator\Desktop\aaa\Gallery\SLOGAN TOURISM.jpg" class="logo">
+                    <i class="fas fa-mountain logo-icon"></i>
+                    Aliner Tour And Travel
+                </a>
+                <ul class="nav-links">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="types of Tours.html" class="active">Tours</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="Aboutus.html">Aboutus</a></li>
+                    <li><a href="Contactus.html">Contact</a></li>
+                    <li><a href="C:\Users\Administrator\Desktop\aaa\Heritages in ethiopia.html">Heritages list</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Ethiopian Flag Colors -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover the Wonders of Ethiopia</h1>
+            <p>Explore ancient history, breathtaking landscapes, and vibrant cultures on our carefully crafted tours</p>
+            <a href="types of tours.html" class="btn">Aliner Tours</a>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section" id="tours">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Tour Types</h2>
+                <p>Experience the diversity of Ethiopia through our specialized tour packages</p>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <img src="C:\Users\administrator\Desktop\aaa\Gallery\DENAKIL.jpG" alt="DENAKIL">
+                        <div class="slide-content">
+                            <h3>Historical & Cultural Tours</h3>
+                            <p>Explore Ethiopia's rich history from ancient Axum to the rock-hewn churches of Lalibela</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="C:Users\Administrator\Desktop\aaa\Gallery\conso cultural landscape.jpg" alt="Nature Tours">
+                        <div class="slide-content">
+                            <h3>Nature & Wildlife Tours</h3>
+                            <p>Discover the stunning landscapes and unique wildlife of the Simien Mountains and national parks</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\Bale mountain.jpg" alt="Bale mountain">
+                        <div class="slide-content">
+                            <h3>Adventure & Trekking Tours</h3>
+                            <p>Challenge yourself with epic hikes, mountain climbing, and outdoor adventures</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\sof umar cave.jpg" alt="sof umar cave">
+                        <div class="slide-content">
+                            <h3>Festival & Event Tours</h3>
+                            <p>Immerse yourself in Ethiopia's vibrant cultural celebrations and religious festivals</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5-->
+                    <div class="carousel-slide">
+                        <img src="C:\Users\administrator\Desktop\aaa\Gallery\National Museums.jpg" alt="Museums">
+                        <div class="slide-content">
+                            <h3>Museums and Parks</h3>
+                            <p>Explore Ethiopia's rich history from Historical Museums and vibrant Natural wonders from the highest pic Ras Dashen, semien moutain to the lowest place on the earth<em> of Ertale.</em></p>
+                        </div>
+                    </div>
+                    <!-- Slide 6 -->
+                    <div class="carousel-slide">
+                        <img src="C:\Users\administrator\Desktop\aaa\Gallery\Meskel.jpg" alt="Meskel">
+                        <div class="slide-content">
+                            <h3>Festivals and Cultural Tours</h3>
+                            <p>Explore Ethiopia's rich culture and Remarkable festivals Like Meskel, Irrechaa, Fiche chambalala, shwalin festival and others.</p>
+                        </div>
+                    </div>
+                </div>
+                            <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                
+                <div class="carousel-indicators">
+                    <div class="indicator active"></div>
+                    <div class="indicator"></div>
+                    <div class="indicator"></div>
+                    <div class="indicator"></div>
+                    <div class="indicator"></div>
+                    <div class="container"></div>
+                    <div class="indicator"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accordion Section -->
+    <section class="accordion-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tour Details</h2>
+                <p>Learn more about what each tour type includes</p>
+            </div>
+            
+            <div class="accordion-container">
+                <!-- Accordion Item 1 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Historical & Cultural Tours</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Our historical tours take you through Ethiopia's remarkable past, from the ancient kingdom of Axum to the medieval castles of Gondar and the rock-hewn churches of Lalibela.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Guided tours of UNESCO World Heritage sites</li>
+                            <li><i class="fas fa-check"></i> Visits to ancient monasteries and churches</li>
+                            <li><i class="fas fa-check"></i> Cultural interactions with local communities</li>
+                            <li><i class="fas fa-check"></i> Expert local guides with historical knowledge</li>
+                            <li><i class="fas fa-check"></i> Traditional Ethiopian meals and accommodations</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Nature & Wildlife Tours</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Explore Ethiopia's diverse ecosystems, from the highlands of the Simien Mountains to the savannas of the Omo Valley, home to unique wildlife found nowhere else on Earth.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Guided safaris in national parks</li>
+                            <li><i class="fas fa-check"></i> Trekking through stunning landscapes</li>
+                            <li><i class="fas fa-check"></i> Bird watching with expert guides</li>
+                            <li><i class="fas fa-check"></i> Visits to lakes and waterfalls</li>
+                            <li><i class="fas fa-check"></i> Opportunities to see endemic species</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Accordion Item 3 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Adventure & Trekking Tours</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>For the active traveler, our adventure tours offer challenging treks, mountain climbing, and outdoor activities in some of Ethiopia's most spectacular settings.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Multi-day treks in the Simien and Bale Mountains</li>
+                            <li><i class="fas fa-check"></i> Climbing Ethiopia's highest peaks</li>
+                            <li><i class="fas fa-check"></i> Camping in remote wilderness areas</li>
+                            <li><i class="fas fa-check"></i> White-water rafting on the Omo River</li>
+                            <li><i class="fas fa-check"></i> Cultural encounters along trekking routes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Accordion Item 4 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Festival & Event Tours</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Experience Ethiopia's vibrant culture through its colorful festivals and celebrations, which blend religious traditions with ancient customs.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Timed to coincide with major Ethiopian festivals</li>
+                            <li><i class="fas fa-check"></i> Participation in traditional ceremonies</li>
+                            <li><i class="fas check"></i> Cultural performances and music</li>
+                            <li><i class="fas fa-check"></i> Local cuisine and traditional coffee ceremonies</li>
+                            <li><i class="fas fa-check"></i> Opportunities for photography and cultural exchange</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ethiopian Highlights</h2>
+                <p>Must-see destinations included in our tour Packages </p>
+            </div>
+            
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-image">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\conso cultural landscape.jpg" alt="conso cultural landscape">
+                    </div>
+                    <div class="highlight-content">
+                        <h3>Lalibela Rock-Hewn Churches</h3>
+                        <p>Visit the incredible 12th-century churches carved directly into the rock, a UNESCO World Heritage site.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-image">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\Bale mountain.jpg" alt="Bale mountain">
+                    </div>
+                    <div class="highlight-content">
+                        <h3>Simien Mountains National Park</h3>
+                        <p>Trek through stunning landscapes and spot unique wildlife like the Gelada baboon and Ethiopian wolf.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-image">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\BLUE NILE.jpg" alt="BLUE NILE">
+                    </div>
+                    <div class="highlight-content">
+                        <h3>Natural Landscapes</h3>
+                        <p>Trek through stunning landscapes and spot unique wildlife water falls, dive into the remarkable natural gift of ethiopias 13 months of sunshine.</p>
+                    </div>
+                </div>
+                 <div class="highlight-card">
+                    <div class="highlight-image">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\Agelgil.jpg" alt="Agelgil">
+                    </div>
+                <div class="highlight-content">
+                        <h3>Gastronomy Tourism</h3>
+                        <p>Explore Ethiopia's rich Cultural foods and drinks.</p>
+                    </div>
+                </div>
+                 <div class="highlight-card">
+                    <div class="highlight-image">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\Fiche.jpg" alt="Fiche">
+                    </div>
+                <div class="highlight-content">
+                        <h3>Events and Celebrations</h3>
+                        <p>Trek through into Ethiopia's big event celebrations from traditional events to contemporary events.</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-image">
+                     <img src="C:Users\Administrator\Desktop\aaa\Gallery\DENAKIL.jpg" alt="Nature Tours">
+                    </div>
+
+                    <div class="highlight-content">
+                        <h3>Danakil Depression</h3>
+                        <p>Explore one of the hottest places on Earth with its colorful sulfur springs and salt flats.</p>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready for Your Ethiopian Adventure?</h2>
+                <p>Contact us today to book your dream tour and create memories that will last a lifetime.</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ethiopia Tours</h3>
+                 <p>Creating unforgettable travel experiences in the land of origins. Discover the beauty, history, and culture of Ethiopia with us.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Tours</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</li>
+                        <li><i class="fas fa-phone"></i> +251 940320935</li>
+                        <li><i class="fas fa-envelope"></i> info@3atourandtrave.wordpress.com</li>
+                        <li><i class="fas fa-clock"></i> Mon - Fri: 9:00 - 17:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 3atourandtrave Tours/Aliner tour and travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // Function to update carousel position
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            // Next slide
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateCarousel();
+            });
+            
+            // Previous slide
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateCarousel();
+            });
+            
+            // Indicator clicks
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Auto-advance carousel
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateCarousel();
+            }, 5000);
+            
+            // Accordion functionality
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const isActive = header.classList.contains('active');
+                    
+                    // Close all accordion items
+                    accordionHeaders.forEach(h => {
+                        h.classList.remove('active');
+                        h.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        header.classList.add('active');
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+            <!--Destination-->
+            
+
+
+
+
+
+
+            
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations in Ethiopia - Land of Origins</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="html" type="text/css" href="C:\Users\Administrator\Desktop\aaa\types of Tours.html"> 
+<link rel="html" type="text/css" href="c:/users\Administrator\Desktop\aaa\aboutus.html">
+<link rel="stylesheet" type="text/css" href="C:\Users\Administrator\Desktop\aaa\destinations.html">
+<link rel="html" type="text/css" href="C:\Users\Administrator\Desktop\aaa\contact.html">
+<link rel="stylesheet" type="text/css" href="C:\Users\Administrator\Desktop\aaa\contact.html">
+<link rel="html" type="text/css" href="C:\Users\Administrator\Desktop\aaa\contact.html">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #07813a;
+            --secondary: #f9a825;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --accent: #8e44ad;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            font-size: 28px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 10px 0;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: var(--shadow);
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--dark);
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f5f7fa;
+            color: var(--primary);
+            padding-left: 25px;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-login:hover {
+            background-color: rgba(7, 129, 58, 0.1);
+        }
+
+        .btn-signup {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-signup:hover {
+            background-color: #06692f;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn-hero {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .btn-hero:hover {
+            background-color: #e89a1a;
+        }
+
+        /* Introduction Section */
+        .intro {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .intro-text {
+            flex: 1;
+        }
+
+        .intro-text p {
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .intro-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Destinations Section */
+        .destinations {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .destination-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .destination-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Cultural Section */
+        .cultural {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .cultural-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .cultural-item {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .cultural-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .cultural-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .cultural-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .cultural-text {
+            flex: 1;
+        }
+
+        .cultural-text h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .intro-content {
+                flex-direction: column;
+            }
+            
+            .cultural-item, .cultural-item:nth-child(even) {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                display: none;
+                background-color: #f8f9fa;
+                border-radius: 0;
+                width: 100%;
+            }
+
+            .nav-item:hover .dropdown {
+                display: block;
+            }
+
+            .dropdown-item {
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .auth-buttons {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="Travel logo" class="logo">
+                    <i class="fas fa-mountain logo-icon"></i>
+                    <div class="logo-text">Ethiopia<span>Travel</span></div>
+                </a>
+
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="home.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="destinations.html" class="nav-link">
+                            Destinations
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-item">Historical Sites</a>
+                            <a href="#" class="dropdown-item">Natural Wonders</a>
+                            <a href="#" class="dropdown-item">Cultural Experiences</a>
+                            <a href="#" class="dropdown-item">Adventure Tourism</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Tours
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown">
+                            <link><a href="C:\Users\Administrator\Desktop\aaa\northern ethiopia.html" class="dropdown-item">Northern Historic Route</a></link>
+                            <a href="#" class="dropdown-item">Omo Valley Tribes</a>
+                            <a href="#" class="dropdown-item">Danakil Depression</a>
+                            <a href="#" class="dropdown-item">Simien Mountains</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Travel Tips.html" class="nav-link">Travel Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Gallery" class="nav-link">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contactus.html" class="nav-link">Contact</a>
+                    </li>
+                    <div class="auth-buttons">
+                        <a href="#" class="btn btn-login">Login</a>
+                        <a href="#" class="btn btn-signup">Sign Up</a>
+                    </div>
+                </ul>
+
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover the Hidden Treasures of Ethiopia</h1>
+            <p>Explore ancient civilizations, breathtaking landscapes, and vibrant cultures in the land of origins</p>
+            <a href="C:\Users\Administrator\Desktop\aaa\northern ethiopia.html" class="btn btn-hero">Explore Destinations</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro">
+        <div class="container">
+            <div class="section-title">
+                <h2>Welcome to Ethiopia</h2>
+            </div>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>Ethiopia, known as the "Land of Origins," is a country with a rich history dating back thousands of years. It's where coffee was first discovered, where the Blue Nile begins its journey, and home to some of the oldest human fossils ever found.</p>
+                    <p>From the rock-hewn churches of Lalibela to the ancient obelisks of Aksum, from the breathtaking Simien Mountains to the otherworldly Danakil Depression, Ethiopia offers travelers an experience like no other.</p>
+                    <p>With over 80 ethnic groups, each with their own unique traditions, languages, and cultures, Ethiopia is a mosaic of human diversity waiting to be explored.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="C:Users\Administrator\Desktop\aaa\Gallery\conso cultural landscape.jpg" alt="Nature Tours" alt="Ethiopian Landscape">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Destinations</h2>
+            </div>
+            <div class="destination-grid">
+                <!-- Destination 1 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src=" C:Users\Administrator\Desktop\aaa\Gallery\Timket2.jpg" alt="lalibela" style="ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                    </div>
+                    <div class="card-content">
+                        <h3>Lalibela</h3>
+                        <p>Home to 11 medieval rock-hewn churches, carved entirely from single blocks of stone. A UNESCO World Heritage site and important pilgrimage destination.</p>
+                        <div class="card-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Amhara Region</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 2 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\Nature.jpg" alt="Nature.jpg" style="ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                    </div>
+                    <div class="card-content">
+                        <h3>Simien Mountains</h3>
+                        <p>Often called the "Roof of Africa," this national park features dramatic peaks, deep valleys, and unique wildlife including the Gelada baboon.</p>
+                        <div class="card-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Amhara Region</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 3 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\DENAKIL.jpg" alt="DENAKIL.jpg" alt="Danakil Depression" style="ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                    </div>
+                    <div class="card-content">
+                        <h3>Danakil Depression</h3>
+                        <p>One of the hottest places on Earth, featuring colorful hydrothermal fields, salt flats, and an active volcano. A truly otherworldly landscape.</p>
+                        <div class="card-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Afar Region</span>
+                            <span><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 4 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src=" C:\Users\Administrator\Desktop\aaa\Gallery\OMO RIVER.jpg" alt="OMO RIVER" style="ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                    </div>
+                    <div class="card-content">
+                        <h3>Omo Valley</h3>
+                        <p>Home to diverse ethnic groups with unique cultures and traditions. A living museum of human history and cultural diversity.</p>
+                        <div class="card-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Southern Nations</span>
+                            <span><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 5 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\AXUM.jpg" alt="Axum" style="ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                    </div>
+                    <div class="card-content">
+                        <h3>Axum</h3>
+                        <p>The ancient capital of the Aksumite Empire, home to towering obelisks, ancient tombs, and believed to house the Ark of the Covenant.</p>
+                        <div class="card-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Tigray Region</span>
+                            <span><i class="fas fa-star"></i> 4.5</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 6 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="C:\Users\Administrator\Desktop\aaa\Gallery\BLUE NILE.jpg"alt="BLUE NILE.jpg" style="ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                    </div>
+                    <div class="card-content">
+                        <h3>Blue Nile Falls</h3>
+                        <p>Known as "Tis Issat" or "Smoking Water," these impressive waterfalls are a spectacular sight, especially during the rainy season.</p>
+                        <div class="card-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Amhara Region</span>
+                            <span><i class="fas fa-star"></i> 4.4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Section -->
+    <section class="cultural">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cultural Experiences</h2>
+            </div>
+            <div class="cultural-content">
+                <div class="cultural-item">
+                    <div class="cultural-image">
+                        <img src="C:Users\Administrator\Desktop\aaa\Gallery\shwalid.jpg" alt="shwalin" style="ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                    </div>
+                    <div class="cultural-text">
+                        <h3>Traditional Coffee Ceremony</h3>
+                        <p>Experience the authentic Ethiopian coffee ceremony, an integral part of Ethiopian social and cultural life. The ceremony involves roasting green coffee beans, grinding them, and brewing the coffee in a traditional clay pot called a 'jebena'.</p>
+                        <p>This ritual can take up to two hours and is a symbol of friendship, respect, and community.</p>
+                    </div>
+                </div>
+                
+                <div class="cultural-item">
+                    <div class="cultural-image">
+                        <img src="C:Users\Administrator\Desktop\aaa\Gallery\agelgil.jpg" alt="Ethiopian Cuisine" style="ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                    </div>
+                    <div class="cultural-text">
+                        <h3>Ethiopian Cuisine</h3>
+                        <p>Enjoy the unique flavors of Ethiopian food, characterized by its spicy stews and injera - a sourdough flatbread with a slightly spongy texture. Meals are typically shared from a single large plate, emphasizing community and togetherness.</p>
+                        <p>Don't miss trying traditional dishes like doro wat (spicy chicken stew), kitfo (minced raw beef), and shiro (chickpea stew).</p>
+                    </div>
+                </div>
+                
+                <div class="cultural-item">
+                    <div class="cultural-image">
+                    <img src="C:Users\Administrator\Desktop\aaa\Gallery\Meskel.jpg" alt="Meskel" style="ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+                    </div>
+                    <div class="cultural-text">
+                        <h3>Traditional Festivals</h3>
+                        <p>Witness vibrant religious and cultural festivals like Timkat (Epiphany), Meskel (Finding of the True Cross), and Enkutatash (Ethiopian New Year). These celebrations feature colorful processions, traditional music, dancing, and elaborate ceremonies.</p>
+                        <p>Each festival offers a unique insight into Ethiopia's rich cultural heritage and religious traditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ethiopia Travel</h3>
+                    <p>Discover the beauty, history, and culture of Ethiopia with our expertly crafted tours and travel experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\home.html">Home</a></li>
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\destinations.html">Destinations</a></li>
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\types of Tours..html">Tours</a></li>
+                        <li><a href="travel tips.com">Travel Tips</a></li>
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\Gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="lalibela">Lalibela</a></li>
+                        <li><a href="semien Mountains.html">Simien Mountains</a></li>
+                        <li><a href="Danakil.html">Danakil Depression</a></li>
+                        <li><a href="omo.html">Omo Valley</a></li>
+                        <li><a href="C:\Users\Administrator\Desktop\aaa\Gallery\AXUM.jpg">Axum</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</li>
+                        <li><i class="fas fa-phone"></i> <button>:- +251 940320935 <button></li>
+                        <li><i class="fas fa-envelope"></i> http//:www.3atourandtrave.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 3atourandtrave. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.add('fa-bars');
+                hamburger.querySelector('i').classList.remove('fa-times');
+            });
+        });
+    </script>
+   
